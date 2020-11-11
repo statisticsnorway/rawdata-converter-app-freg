@@ -1,0 +1,102 @@
+micronaut:
+  application.name: rawdata-converter-app-freg
+  server:
+    port: 8080
+
+logger.levels:
+  no.ssb.rawdata.converter: DEBUG
+
+endpoints:
+  all:
+    sensitive: false
+  prometheus:
+    sensitive: false
+
+services:
+  dapla-oauth:
+    token-provider: mock
+  dapla-data-access:
+    impl: MOCK
+  dapla-metadata-distributor:
+    impl: MOCK
+
+pseudo-secrets:
+  secret1:
+    content: C5sn7B4YtwcilAwuVx6NuAsMWLusOSA/ldia40ZugDI=
+    type: AES256
+
+rawdata.sources:
+  fs-freg:
+    rawdata-client:
+      provider: filesystem
+      local-temp-folder: temp
+      avro-file:
+        max.seconds: 3600
+        max.bytes: 10485760
+        sync.interval: 500000
+      filesystem:
+        storage-folder: ../localenv/rawdata/ssb-dapla-rawdata-dev-ske-freg
+      listing:
+        min-interval-seconds: 0
+
+rawdata.converter:
+  job-scheduler:
+    max-concurrent-jobs: 10
+  jobs:
+    base:
+      prototype: true
+      debug:
+        dryrun: false
+        development-mode: true
+        log-rawdata-content-allowed: true
+        store-failed-messages: true
+        failed-messages-storage-path: /tmp/failed-messages
+        store-all-messages: false
+        all-messages-storage-path: ./rawdata-messages-output
+      converter-settings:
+        rawdata-samples: 1
+        max-records-before-flush: 1000000
+        max-seconds-before-flush: 300
+      target-storage:
+        type: filesystem
+        root: file://../localenv/datastore
+      target-dataset:
+        valuation: INTERNAL
+        type: BOUNDED
+        publish-metadata: false
+      pseudo-rules:
+        - name: fodselsnummer
+          pattern: '**/{folkeregisteridentifikator,foedselsEllerDNummer,relatertVedSivilstand,relatertPerson,ansvarlig,ansvarssubjekt}'
+          func: fpe-fnr(secret1)
+        - name: rettIdentitetVedIdentifikasjonsnummer
+          pattern: '**/rettIdentitetVedIdentifikasjonsnummer'
+          func: fpe-fnr(secret1)
+        - name: organisasjonsnummer
+          pattern: '**/organisasjonsnummer'
+          func: fpe-digits(secret1)
+        - name: organisasjonsnavn
+          pattern: '**/{organisasjonsnavn,ansvarligOrganisasjon}'
+          func: fpe-anychar(secret1)
+        - name: postbokseier
+          pattern: '**/postboksadresse/postbokseier'
+          func: fpe-anychar(secret1)
+        - name: identifikasjonsdokumentnummer
+          pattern: '**/legitimasjonsdokument/identifikasjonsdokumentnummer'
+          func: fpe-anychar(secret1)
+        - name: personnavn
+          pattern: '{**/fornavn,**/mellomnavn,**/etternavn,**/navn/forkortetNavn}'
+          func: fpe-anychar(secret1)
+        - name: identifikasjonsnummer
+          pattern: '**/identifikasjonsnummer'
+          func: fpe-anychar(secret1)
+
+    job-default:
+      parent: base
+      active-by-default: true
+      rawdata-source:
+        name: fs-freg
+        topic: freg-uttrekk-komplett
+        initial-position: FIRST
+      target-storage:
+        path: /kilde/freg/raadata/202009211735
+        version: 1598553650000
