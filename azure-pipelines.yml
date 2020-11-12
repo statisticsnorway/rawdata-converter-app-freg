@@ -59,7 +59,7 @@ jobs:
       - download: current
         displayName: 'Download pipeline artifact'
         patterns: |
-          **/rawdata-converter-appg-*.jar
+          **/rawdata-converter-app-freg-*.jar
           **/logback*.xml
         artifact: target
 
