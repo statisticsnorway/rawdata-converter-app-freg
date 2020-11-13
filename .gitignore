@@ -4,6 +4,7 @@
 /target/classes/static/**
 /src/test/javascript/coverage/
 **/target/*
+application-local-private.yml
 
 ######################
 # Node
