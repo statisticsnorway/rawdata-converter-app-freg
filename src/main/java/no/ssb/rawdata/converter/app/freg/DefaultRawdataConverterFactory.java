@@ -25,7 +25,7 @@ public class DefaultRawdataConverterFactory implements RawdataConverterFactory {
         FregRawdataConverterConfig converterConfig = defaultRawdataConverterConfig;
         if (converterConfigJson != null) {
             try {
-                Json.toObject(FregRawdataConverterConfig.class, converterConfigJson);
+                converterConfig = Json.toObject(FregRawdataConverterConfig.class, converterConfigJson);
             }
             catch (Exception e) {
                 throw new RawdataConverterException("Invalid FregRawdataConverterConfig params: " + converterConfigJson, e);
