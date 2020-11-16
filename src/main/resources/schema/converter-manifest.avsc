@@ -1,0 +1,13 @@
+{
+  "type": "record",
+  "name": "converterManifest",
+  "fields": [
+    {
+      "name": "schemas",
+      "type": {
+        "type": "map",
+        "values": ["null", "string"]
+      }
+    }
+  ]
+}

@@ -43,7 +43,7 @@ public class FregSchemas {
         );
     }
 
-    public static FregSchemaAdapter getBySchemaSource(SchemaDescriptor schemaSource) {
+    public static FregSchemaAdapter getBySchemaDescriptor(SchemaDescriptor schemaSource) {
         FregSchemaAdapter fregSchemaAdapter = SCHEMAS.stream()
           .filter(schema -> schema.getSchemaName().equalsIgnoreCase(schemaSource.getSchemaName()))
           .findFirst()
