@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <xsd:schema xmlns="folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+    <xsd:element name="lagretHendelse" type="HendelseFeed" />
+    <xsd:complexType name="HendelseFeed">
+      <xsd:sequence>
+        <xsd:element name="sekvensnummer" type="PositivtStortHeltall" />
+        <xsd:element name="hendelse" type="TynnHendelsePaaFeed" />
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TynnHendelsePaaFeed">
+      <xsd:sequence>
+        <xsd:element name="folkeregisteridentifikator" type="Foedselsnummer" />
+        <xsd:element name="hendelsetype" type="Hendelsestype" />
+        <xsd:element name="ajourholdstidspunkt" type="DatoKlokkeslett" />
+      </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="PositivtStortHeltall">
+      <xsd:restriction base="xsd:unsignedLong" />
+    </xsd:simpleType>
+    <xsd:simpleType name="Foedselsnummer">
+      <xsd:annotation>
+        <xsd:documentation>ellevesifret identifikasjonsnummer for personer bosatt i Norge, der de seks første sifrene angir fødselsdato og de fem siste
+        personnummer.
+      </xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="Tekst">
+        <xsd:length value="11" />
+        <xsd:pattern value="[0-9]+" />
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Tekst">
+      <xsd:annotation>
+        <xsd:documentation>vilkårlig lang sekvens av tegn inkludert aksenter og spesielle tegn fra standardiserte tegnsett
+      </xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:string">
+        <xsd:maxLength value="4000" />
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="Hendelsestype">
+      <xsd:restriction base="xsd:string">
+        <xsd:enumeration value="endringIOppholdPaaSvalbard" />
+      </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="DatoKlokkeslett">
+      <xsd:annotation>
+        <xsd:documentation>en kombinasjon av typene Dato og Klokkeslett. Kodes som en tekststreng etter datoformatering spesifisert i ISO 8601 (ISO 8601:2004 Data
+        elements and interchange formats -- Information interchange -- Representation of dates and times).
+      </xsd:documentation>
+      </xsd:annotation>
+      <xsd:restriction base="xsd:dateTime" />
+    </xsd:simpleType>
+  </xsd:schema>
