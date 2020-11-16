@@ -119,7 +119,6 @@ public class FregRawdataConverter implements RawdataConverter {
                 convertXml(rawdataMessage, resultBuilder, schema);
             }
         });
-        System.out.println(resultBuilder.build().getGenericRecord().toString());
         return resultBuilder.build();
     }
 
