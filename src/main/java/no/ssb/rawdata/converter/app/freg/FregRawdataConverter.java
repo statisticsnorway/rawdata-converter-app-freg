@@ -1,5 +1,6 @@
 package no.ssb.rawdata.converter.app.freg;
 
+import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
 import no.ssb.avro.convert.xml.XmlToRecords;
 import no.ssb.rawdata.api.RawdataMessage;
@@ -19,26 +20,33 @@ import org.apache.avro.generic.GenericRecordBuilder;
 import java.io.ByteArrayInputStream;
 import java.util.Collection;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static no.ssb.rawdata.converter.util.RawdataMessageAdapter.posAndIdOf;
 
 @Slf4j
 public class FregRawdataConverter implements RawdataConverter {
 
-    private static final String RAWDATA_ITEMNAME_EVENT = "event";
-    private static final String RAWDATA_ITEMNAME_PERSON = "person";
     private static final String FIELDNAME_DC_MANIFEST = "dcManifest";
-    private final static Set<String> FREG_RAWDATA_ITEMS = Set.of(RAWDATA_ITEMNAME_EVENT, RAWDATA_ITEMNAME_PERSON);
 
     private final FregRawdataConverterConfig converterConfig;
     private final ValueInterceptorChain valueInterceptorChain;
 
     private DcManifestSchemaAdapter dcManifestSchemaAdapter;
     private Schema targetAvroSchema;
+    private final Set<FregSchemaAdapter> fregSchemas;
+    private final Set<String> requiredRawdataItems;
 
     public FregRawdataConverter(FregRawdataConverterConfig converterConfig, ValueInterceptorChain valueInterceptorChain) {
         this.converterConfig = converterConfig;
         this.valueInterceptorChain = valueInterceptorChain;
+        this.fregSchemas = converterConfig.getDataElements()
+          .stream().map(schemaSource -> FregSchemas.getBySchemaSource(schemaSource))
+          .collect(Collectors.toSet());
+        this.requiredRawdataItems = fregSchemas.stream()
+          .filter(schema -> !schema.getOptional())
+          .map(schema -> schema.getRawdataItemName())
+          .collect(Collectors.toSet());
     }
 
     @Override
@@ -57,9 +65,8 @@ public class FregRawdataConverter implements RawdataConverter {
         AggregateSchemaBuilder targetSchemabuilder = new AggregateSchemaBuilder(targetNamespace)
           .schema(FIELDNAME_DC_MANIFEST, dcManifestSchemaAdapter.getDcManifestSchema());
 
-        FREG_RAWDATA_ITEMS.forEach(rawdataItemName -> {
-            FregSchemaAdapter schemaAdapter = FregSchemas.getByRawdataItemName(rawdataItemName);
-            targetSchemabuilder.schema(schemaAdapter.getTargetItemName(), schemaAdapter.getSchema());
+        fregSchemas.forEach(schema -> {
+            targetSchemabuilder.schema(schema.getTargetItemName(), schema.getSchema());
         });
 
         targetAvroSchema = targetSchemabuilder.build();
@@ -84,19 +91,25 @@ public class FregRawdataConverter implements RawdataConverter {
 
     @Override
     public boolean isConvertible(RawdataMessage rawdataMessage) {
-        return true; // TODO: skip if person data is missing?
+        if (rawdataMessage.keys().containsAll(requiredRawdataItems)) {
+            return true;
+        }
+        else {
+            log.warn("Missing required rawdata items {}. Skipping rawdataMessage {}",
+              Sets.difference(requiredRawdataItems, rawdataMessage.keys()),
+              posAndIdOf(rawdataMessage));
+            return false;
+        }
     }
 
     @Override
     public ConversionResult convert(RawdataMessage rawdataMessage) {
         ConversionResultBuilder resultBuilder = ConversionResult.builder(new GenericRecordBuilder(targetAvroSchema));
-
         addDcManifest(rawdataMessage, resultBuilder);
 
-        FREG_RAWDATA_ITEMS.forEach(rawdataItemName -> {
-            if (rawdataMessage.keys().contains(rawdataItemName)) {
-                FregSchemaAdapter schemaAdapter = FregSchemas.getByRawdataItemName(rawdataItemName);
-                convertXml(rawdataMessage, resultBuilder, schemaAdapter);
+        fregSchemas.forEach(schema -> {
+            if (rawdataMessage.keys().contains(schema.getRawdataItemName())) {
+                convertXml(rawdataMessage, resultBuilder, schema);
             }
         });
 
@@ -109,7 +122,7 @@ public class FregRawdataConverter implements RawdataConverter {
 
     void convertXml(RawdataMessage rawdataMessage, ConversionResultBuilder resultBuilder, FregSchemaAdapter schemaAdapter) {
         byte[] data = rawdataMessage.get(schemaAdapter.getRawdataItemName());
-        try (XmlToRecords records = new XmlToRecords(new ByteArrayInputStream(data), schemaAdapter.getRootXmlName(), schemaAdapter.getSchema(), valueInterceptorChain::intercept)) {
+        try (XmlToRecords records = new XmlToRecords(new ByteArrayInputStream(data), schemaAdapter.getRootElementName(), schemaAdapter.getSchema(), valueInterceptorChain::intercept)) {
             records.forEach(record ->
               resultBuilder.withRecord(schemaAdapter.getTargetItemName(), record)
             );

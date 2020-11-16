@@ -1,47 +1,75 @@
 package no.ssb.rawdata.converter.app.freg.schema;
 
-import com.google.common.base.Functions;
 import no.ssb.rawdata.converter.app.freg.FregRawdataConverter.FregRawdataConverterException;
-import no.ssb.rawdata.converter.util.WordUtil;
 
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static no.ssb.rawdata.converter.util.AvroSchemaUtil.readAvroSchema;
 
 public class FregSchemas {
 
-    private static final Map<String, FregSchemaAdapter> SCHEMAS_BY_RAWDATA_ITEM_NAME;
+    private static final Set<FregSchemaAdapter> SCHEMAS;
 
     static {
-        Set<FregSchemaAdapter> SCHEMAS = Set.of(
+        SCHEMAS = Set.of(
           FregSchemaAdapter.builder()
+            .schemaName("freg-hendelse-v1_4")
+            .schema(readAvroSchema("schema/freg-hendelse-v1_4.avsc"))
             .rawdataItemName("event")
             .targetItemName("hendelse")
-            .schema(readAvroSchema("schema/freg-hendelse_v1.4.avsc"))
-            .rootXmlName("dokumentForHendelse")
+            .rootElementName("dokumentForHendelse")
             .build(),
           FregSchemaAdapter.builder()
+            .schemaName("freg-person-v1_4")
+            .schema(readAvroSchema("schema/freg-person-v1_4.avsc"))
             .rawdataItemName("person")
             .targetItemName("person")
-            .schema(readAvroSchema("schema/freg-person_v1.4.avsc"))
-            .rootXmlName("folkeregisterperson")
+            .rootElementName("folkeregisterperson")
+            .build(),
+          FregSchemaAdapter.builder()
+            .schemaName("brsv-hendelsefeed-v1_0")
+            .schema(readAvroSchema("schema/brsv-hendelsefeed-v1_0.avsc"))
+            .rawdataItemName("event")
+            .targetItemName("hendelse")
+            .rootElementName("dokumentForHendelse")
+            .build(),
+          FregSchemaAdapter.builder()
+            .schemaName("brsv-person-v1_0")
+            .schema(readAvroSchema("schema/brsv-person-v1_0.avsc"))
+            .rawdataItemName("person")
+            .targetItemName("person")
+            .rootElementName("folkeregisterperson")
             .build()
         );
-
-        SCHEMAS_BY_RAWDATA_ITEM_NAME = SCHEMAS.stream()
-          .collect(Collectors.toMap(
-            s -> s.getRawdataItemName(),
-            Functions.identity())
-          );
     }
 
-    public static FregSchemaAdapter getByRawdataItemName(String rawdataItemName) {
-        return Optional.ofNullable(SCHEMAS_BY_RAWDATA_ITEM_NAME.get(rawdataItemName))
+    public static FregSchemaAdapter getBySchemaSource(SchemaDescriptor schemaSource) {
+        FregSchemaAdapter fregSchemaAdapter = SCHEMAS.stream()
+          .filter(schema -> schema.getSchemaName().equalsIgnoreCase(schemaSource.getSchemaName()))
+          .findFirst()
           .orElseThrow(() ->
-            new SchemaNotFoundException("No freg schema found for rawdata item: " + rawdataItemName));
+            new SchemaNotFoundException("No schema found for " + schemaSource.getSchemaName()));
+        fregSchemaAdapter = merge(fregSchemaAdapter, schemaSource);
+
+        return fregSchemaAdapter;
+    }
+
+    private static FregSchemaAdapter merge(FregSchemaAdapter fregSchemaAdapter, SchemaDescriptor overrides) {
+        FregSchemaAdapter.FregSchemaAdapterBuilder builder = fregSchemaAdapter.toBuilder();
+        if (overrides.getRawdataItemName() != null) {
+            builder.rawdataItemName(overrides.getRawdataItemName());
+        }
+        if (overrides.getTargetItemName() != null) {
+            builder.targetItemName(overrides.getTargetItemName());
+        }
+        if (overrides.getOptional() != null) {
+            builder.optional(overrides.getOptional());
+        }
+        if (overrides.getRootElementName() != null) {
+            builder.rootElementName(overrides.getRootElementName());
+        }
+
+        return builder.build();
     }
 
     public static class SchemaNotFoundException extends FregRawdataConverterException {

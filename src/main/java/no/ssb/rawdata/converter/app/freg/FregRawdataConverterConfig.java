@@ -2,18 +2,18 @@ package no.ssb.rawdata.converter.app.freg;
 
 import io.micronaut.context.annotation.ConfigurationProperties;
 import lombok.Data;
+import no.ssb.rawdata.converter.app.freg.schema.SchemaDescriptor;
 
-@ConfigurationProperties("rawdata.converter.app.freg")
+import java.util.HashSet;
+import java.util.Set;
+
+@ConfigurationProperties("rawdata.converter.freg")
 @Data
 public class FregRawdataConverterConfig {
 
     /**
-     * <p>Some config param</p>
-     *
-     * <p>Defaults to "default value"</p>
-     *
-     * TODO: Remove this
+     * <p>Schemas of the expected data elements that the converted data is expected to be compliant with</p>
      */
-    private String someParam = "default value";
+    private Set<SchemaDescriptor> dataElements = new HashSet<>();
 
 }
