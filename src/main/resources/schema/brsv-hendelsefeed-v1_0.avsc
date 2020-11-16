@@ -1,0 +1,30 @@
+{
+  "type" : "record",
+  "namespace": "brsv.hendelsefeed",
+  "name" : "HendelseFeed",
+  "fields" : [ {
+    "name" : "sekvensnummer",
+    "type" : "string",
+    "source" : "element folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1:sekvensnummer"
+  }, {
+    "name" : "hendelse",
+    "type" : {
+      "type" : "record",
+      "name" : "TynnHendelsePaaFeed",
+      "fields" : [ {
+        "name" : "folkeregisteridentifikator",
+        "type" : "string",
+        "source" : "element folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1:folkeregisteridentifikator"
+      }, {
+        "name" : "hendelsetype",
+        "type" : "string",
+        "source" : "element folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1:hendelsetype"
+      }, {
+        "name" : "ajourholdstidspunkt",
+        "type" : "string",
+        "source" : "element folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1:ajourholdstidspunkt"
+      } ]
+    },
+    "source" : "element folkeregisteret:tilgjengeliggjoering:brsv:hendelse:v1:hendelse"
+  } ]
+}
