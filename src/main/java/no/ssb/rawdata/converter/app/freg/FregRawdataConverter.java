@@ -16,6 +16,7 @@ import no.ssb.rawdata.converter.core.schema.DcManifestSchemaAdapter;
 import no.ssb.rawdata.converter.util.AvroSchemaUtil;
 import no.ssb.rawdata.converter.util.RawdataMessageAdapter;
 import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.generic.GenericRecordBuilder;
 
 import java.io.ByteArrayInputStream;
@@ -29,8 +30,9 @@ import static no.ssb.rawdata.converter.util.RawdataMessageAdapter.posAndIdOf;
 @Slf4j
 public class FregRawdataConverter implements RawdataConverter {
 
-    private static final String FIELDNAME_DC_MANIFEST = "dcManifest";
-    private static final String FIELDNAME_CONVERTER_MANIFEST = "converterManifest";
+    private static final String FIELDNAME_MANIFEST = "manifest";
+    private static final String FIELDNAME_DC_MANIFEST = "collector";
+    private static final String FIELDNAME_CONVERTER_MANIFEST = "converter";
 
     private final FregRawdataConverterConfig converterConfig;
     private final ValueInterceptorChain valueInterceptorChain;
@@ -39,6 +41,7 @@ public class FregRawdataConverter implements RawdataConverter {
     private final Set<String> requiredRawdataItems;
     private final Schema converterManifestSchema;
     private DcManifestSchemaAdapter dcManifestSchemaAdapter;
+    private Schema manifestSchema;
     private Schema targetAvroSchema;
 
     public FregRawdataConverter(FregRawdataConverterConfig converterConfig, ValueInterceptorChain valueInterceptorChain) {
@@ -66,16 +69,21 @@ public class FregRawdataConverter implements RawdataConverter {
         RawdataMessageAdapter msg = new RawdataMessageAdapter(sample);
         dcManifestSchemaAdapter = DcManifestSchemaAdapter.of(sample);
 
-        String targetNamespace = "dapla.rawdata." + msg.getTopic().orElse("freg");
-        AggregateSchemaBuilder targetSchemabuilder = new AggregateSchemaBuilder(targetNamespace)
-          .schema(FIELDNAME_DC_MANIFEST, dcManifestSchemaAdapter.getDcManifestSchema())
-          .schema(FIELDNAME_CONVERTER_MANIFEST, converterManifestSchema);
+        String targetNamespace = "dapla.rawdata.ske.freg" + msg.getTopic().orElse("dataset");
+
+        manifestSchema = new AggregateSchemaBuilder("dapla.rawdata.manifest")
+          .schema("collector", dcManifestSchemaAdapter.getDcManifestSchema())
+          .schema("converter", converterManifestSchema)
+          .build();
+
+        AggregateSchemaBuilder targetSchemaBuilder = new AggregateSchemaBuilder(targetNamespace)
+          .schema("manifest", manifestSchema);
 
         fregSchemas.forEach(schema -> {
-            targetSchemabuilder.schema(schema.getTargetItemName(), schema.getSchema());
+            targetSchemaBuilder.schema(schema.getTargetItemName(), schema.getSchema());
         });
 
-        targetAvroSchema = targetSchemabuilder.build();
+        targetAvroSchema = targetSchemaBuilder.build();
     }
 
     public DcManifestSchemaAdapter dcManifestSchemaAdapter() {
@@ -110,10 +118,9 @@ public class FregRawdataConverter implements RawdataConverter {
 
     @Override
     public ConversionResult convert(RawdataMessage rawdataMessage) {
-        ConversionResultBuilder resultBuilder = ConversionResult.builder(new GenericRecordBuilder(targetAvroSchema));
-        addDcManifest(rawdataMessage, resultBuilder);
-        addConverterManifest(resultBuilder);
+        ConversionResultBuilder resultBuilder = ConversionResult.builder(targetAvroSchema, rawdataMessage);
 
+        addManifest(rawdataMessage, resultBuilder);
         fregSchemas.forEach(schema -> {
             if (rawdataMessage.keys().contains(schema.getRawdataItemName())) {
                 convertXml(rawdataMessage, resultBuilder, schema);
@@ -122,21 +129,25 @@ public class FregRawdataConverter implements RawdataConverter {
         return resultBuilder.build();
     }
 
-    void addDcManifest(RawdataMessage rawdataMessage, ConversionResultBuilder resultBuilder) {
-        resultBuilder.withRecord(FIELDNAME_DC_MANIFEST, dcManifestSchemaAdapter().newRecord(rawdataMessage, valueInterceptorChain));
+    void addManifest(RawdataMessage rawdataMessage, ConversionResultBuilder resultBuilder) {
+        GenericRecord manifest = new GenericRecordBuilder(manifestSchema)
+          .set(FIELDNAME_DC_MANIFEST, dcManifestSchemaAdapter().newRecord(rawdataMessage, valueInterceptorChain))
+          .set(FIELDNAME_CONVERTER_MANIFEST, converterManifestData())
+          .build();
+
+        resultBuilder.withRecord(FIELDNAME_MANIFEST, manifest);
     }
 
-    void addConverterManifest(ConversionResultBuilder resultBuilder) {
+    GenericRecord converterManifestData() {
         Map<String, String> schemaInfo = fregSchemas.stream()
           .collect(Collectors.toMap(
             FregSchemaAdapter::getTargetItemName,
             FregSchemaAdapter::getSchemaName
           ));
 
-        resultBuilder.withRecord(FIELDNAME_CONVERTER_MANIFEST, new GenericRecordBuilder(converterManifestSchema)
+        return new GenericRecordBuilder(converterManifestSchema)
           .set("schemas", schemaInfo)
-          .build()
-        );
+          .build();
     }
 
     void convertXml(RawdataMessage rawdataMessage, ConversionResultBuilder resultBuilder, FregSchemaAdapter schemaAdapter) {
