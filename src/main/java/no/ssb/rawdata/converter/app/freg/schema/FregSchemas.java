@@ -20,6 +20,13 @@ public class FregSchemas {
             .rootElementName("dokumentForHendelse")
             .build(),
           FregSchemaAdapter.builder()
+            .schemaName("freg-hendelse-v1_4_2")
+            .schema(readAvroSchema("schema/freg-hendelse-v1_4_2.avsc"))
+            .rawdataItemName("event")
+            .targetItemName("hendelse")
+            .rootElementName("dokumentForHendelse")
+            .build(),
+          FregSchemaAdapter.builder()
             .schemaName("freg-person-v1_4")
             .schema(readAvroSchema("schema/freg-person-v1_4.avsc"))
             .rawdataItemName("person")

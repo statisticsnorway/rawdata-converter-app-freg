@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SchemaDescriptor {
+    public SchemaDescriptor(String schemaName) {
+        this.schemaName = schemaName;
+    }
+
     private String schemaName;
     private Boolean optional;
     private String rawdataItemName;

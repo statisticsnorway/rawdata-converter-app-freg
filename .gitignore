@@ -2,6 +2,7 @@
 # Project Specific
 ######################
 /target/classes/static/**
+/src/test/resources/rawdata-messages/private
 /src/test/javascript/coverage/
 **/target/*
 application-local-private.yml
