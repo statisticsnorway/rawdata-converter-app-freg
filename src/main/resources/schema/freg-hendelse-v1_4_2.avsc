@@ -330,7 +330,7 @@
                       "name" : "adresselinje",
                       "type" : {
                         "type" : "array",
-                        "items" : "string"
+                        "items" : [ "null", "string" ]
                       },
                       "source" : "element folkeregisteret:tilgjengeliggjoering:hendelse:v1:adresselinje"
                     }, {
@@ -1654,7 +1654,7 @@
                       "name" : "adresselinje",
                       "type" : [ "null", {
                         "type" : "array",
-                        "items" : "string"
+                        "items" : [ "null", "string" ]
                       } ],
                       "default" : null,
                       "source" : "element folkeregisteret:tilgjengeliggjoering:hendelse:v1:adresselinje"
@@ -1724,7 +1724,7 @@
                       "name" : "adresselinje",
                       "type" : [ "null", {
                         "type" : "array",
-                        "items" : "string"
+                        "items" : [ "null", "string" ]
                       } ],
                       "default" : null,
                       "source" : "element folkeregisteret:tilgjengeliggjoering:hendelse:v1:adresselinje"
