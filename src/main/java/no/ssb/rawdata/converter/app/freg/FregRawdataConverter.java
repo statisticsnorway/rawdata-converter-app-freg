@@ -48,9 +48,13 @@ public class FregRawdataConverter implements RawdataConverter {
         this.converterConfig = converterConfig;
         this.valueInterceptorChain = valueInterceptorChain;
         this.converterManifestSchema = AvroSchemaUtil.readAvroSchema("schema/converter-manifest.avsc");
-        this.fregSchemas = converterConfig.getDataElements()
-          .stream().map(schemaDescriptor -> FregSchemas.getBySchemaDescriptor(schemaDescriptor))
+        this.fregSchemas = converterConfig.getDataElements().stream()
+          .map(schemaDescriptor -> FregSchemas.getBySchemaDescriptor(schemaDescriptor))
           .collect(Collectors.toSet());
+        if (fregSchemas.isEmpty()) {
+            throw new FregRawdataConverterException("No FREG data elements configured. Make sure to specify at least one target schema (app-config.data-elements[].schema-name)");
+        }
+
         this.requiredRawdataItems = fregSchemas.stream()
           .filter(schema -> !schema.getOptional())
           .map(schema -> schema.getRawdataItemName())
@@ -59,7 +63,7 @@ public class FregRawdataConverter implements RawdataConverter {
 
     @Override
     public void init(Collection<RawdataMessage> sampleRawdataMessages) {
-        log.info("Determine target avro schema from {}", sampleRawdataMessages);
+        log.info("Determine target avro schema from {} rawdata messages", sampleRawdataMessages.size());
         RawdataMessage sample = sampleRawdataMessages.stream()
           .findFirst()
           .orElseThrow(() ->
