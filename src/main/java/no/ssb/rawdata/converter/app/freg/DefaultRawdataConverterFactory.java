@@ -23,12 +23,13 @@ public class DefaultRawdataConverterFactory implements RawdataConverterFactory {
     @Override
     public RawdataConverter newRawdataConverter(ConverterJobConfig jobConfig, String converterConfigJson) {
         FregRawdataConverterConfig converterConfig = defaultRawdataConverterConfig;
-        if (converterConfigJson != null) {
+
+        if (! jobConfig.getAppConfig().isEmpty()) {
             try {
-                converterConfig = Json.toObject(FregRawdataConverterConfig.class, converterConfigJson);
+                converterConfig = Json.toObject(FregRawdataConverterConfig.class, jobConfig.appConfigJson());
             }
             catch (Exception e) {
-                throw new RawdataConverterException("Invalid FregRawdataConverterConfig params: " + converterConfigJson, e);
+                throw new RawdataConverterException("Invalid FregRawdataConverterConfig params: " + jobConfig.appConfigJson(), e);
             }
         }
 
