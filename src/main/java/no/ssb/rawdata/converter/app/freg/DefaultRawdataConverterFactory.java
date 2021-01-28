@@ -21,7 +21,7 @@ public class DefaultRawdataConverterFactory implements RawdataConverterFactory {
     private final FregRawdataConverterConfig defaultRawdataConverterConfig;
 
     @Override
-    public RawdataConverter newRawdataConverter(ConverterJobConfig jobConfig, String converterConfigJson) {
+    public RawdataConverter newRawdataConverter(ConverterJobConfig jobConfig) {
         FregRawdataConverterConfig converterConfig = defaultRawdataConverterConfig;
 
         if (! jobConfig.getAppConfig().isEmpty()) {
