@@ -1,0 +1,2370 @@
+{
+  "type" : "record",
+  "namespace": "freg.person",
+  "name" : "Folkeregisterperson",
+  "fields" : [ {
+    "name" : "falskIdentitet",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "FalskIdentitet",
+      "fields" : [ {
+        "name" : "ajourholdstidspunkt",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+      }, {
+        "name" : "erGjeldende",
+        "type" : [ "null", "boolean" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+      }, {
+        "name" : "kilde",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+      }, {
+        "name" : "aarsak",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+      }, {
+        "name" : "gyldighetstidspunkt",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+      }, {
+        "name" : "opphoerstidspunkt",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+      }, {
+        "name" : "rettIdentitetVedOpplysninger",
+        "type" : [ "null", {
+          "type" : "record",
+          "name" : "IdentifiserendeInformasjon",
+          "fields" : [ {
+            "name" : "personnavn",
+            "type" : {
+              "type" : "record",
+              "name" : "Personnavn",
+              "fields" : [ {
+                "name" : "fornavn",
+                "type" : "string",
+                "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:fornavn"
+              }, {
+                "name" : "mellomnavn",
+                "type" : [ "null", "string" ],
+                "default" : null,
+                "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:mellomnavn"
+              }, {
+                "name" : "etternavn",
+                "type" : "string",
+                "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:etternavn"
+              } ]
+            },
+            "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:personnavn"
+          }, {
+            "name" : "foedselsdato",
+            "type" : [ "null", "string" ],
+            "default" : null,
+            "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsdato"
+          }, {
+            "name" : "statsborgerskap",
+            "type" : {
+              "type" : "array",
+              "items" : "string"
+            },
+            "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:statsborgerskap"
+          }, {
+            "name" : "kjoenn",
+            "type" : [ "null", "string" ],
+            "default" : null,
+            "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kjoenn"
+          } ]
+        } ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:rettIdentitetVedOpplysninger"
+      }, {
+        "name" : "rettIdentitetErUkjent",
+        "type" : [ "null", "boolean" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:rettIdentitetErUkjent"
+      }, {
+        "name" : "rettIdentitetVedIdentifikasjonsnummer",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:rettIdentitetVedIdentifikasjonsnummer"
+      }, {
+        "name" : "erFalsk",
+        "type" : "boolean",
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erFalsk"
+      } ]
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:falskIdentitet"
+  }, {
+    "name" : "identifikasjonsnummer",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Folkeregisteridentifikator",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "status",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:status"
+        }, {
+          "name" : "foedselsEllerDNummer",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsEllerDNummer"
+        }, {
+          "name" : "identifikatortype",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identifikatortype"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identifikasjonsnummer"
+  }, {
+    "name" : "identitetsgrunnlag",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Identitetsgrunnlag",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "identitetsgrunnlagstatus",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identitetsgrunnlagstatus"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identitetsgrunnlag"
+  }, {
+    "name" : "kontaktinformasjonForDoedsbo",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "KontaktinformasjonForDoedsbo",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "person",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "PersonSomKontakt",
+            "fields" : [ {
+              "name" : "foedselsdato",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsdato"
+            }, {
+              "name" : "personnavn",
+              "type" : [ "null", "Personnavn" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:personnavn"
+            }, {
+              "name" : "foedselsEllerDNummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsEllerDNummer"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:person"
+        }, {
+          "name" : "advokat",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "AdvokatSomKontakt",
+            "fields" : [ {
+              "name" : "personnavn",
+              "type" : "Personnavn",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:personnavn"
+            }, {
+              "name" : "organisasjonsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:organisasjonsnavn"
+            }, {
+              "name" : "organisasjonsnummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:organisasjonsnummer"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:advokat"
+        }, {
+          "name" : "organisasjon",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "OrganisasjonSomKontakt",
+            "fields" : [ {
+              "name" : "organisasjonsnavn",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:organisasjonsnavn"
+            }, {
+              "name" : "organisasjonsnummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:organisasjonsnummer"
+            }, {
+              "name" : "kontaktpersonnavn",
+              "type" : [ "null", "Personnavn" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kontaktpersonnavn"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:organisasjon"
+        }, {
+          "name" : "skifteform",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:skifteform"
+        }, {
+          "name" : "attestutstedelsesdato",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:attestutstedelsesdato"
+        }, {
+          "name" : "adresse",
+          "type" : {
+            "type" : "record",
+            "name" : "KontaktadresseForDoedsbo",
+            "fields" : [ {
+              "name" : "adresselinje",
+              "type" : {
+                "type" : "array",
+                "items" : [ "null",  "string" ]
+              },
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresselinje"
+            }, {
+              "name" : "poststedsnavn",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststedsnavn"
+            }, {
+              "name" : "postnummer",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postnummer"
+            }, {
+              "name" : "landkode",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:landkode"
+            } ]
+          },
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresse"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kontaktinformasjonForDoedsbo"
+  }, {
+    "name" : "legitimasjonsdokument",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Identifikasjonsdokument",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "identifikasjonsdokumentnummer",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identifikasjonsdokumentnummer"
+        }, {
+          "name" : "identifikasjonsdokumenttype",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identifikasjonsdokumenttype"
+        }, {
+          "name" : "utstederland",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utstederland"
+        }, {
+          "name" : "utstedernavn",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utstedernavn"
+        }, {
+          "name" : "gyldigFra",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldigFra"
+        }, {
+          "name" : "gyldigTil",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldigTil"
+        }, {
+          "name" : "dokumentkontroll",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "TekniskDokumentkontroll",
+            "fields" : [ {
+              "name" : "dokumentkontrollstatus",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:dokumentkontrollstatus"
+            }, {
+              "name" : "dokumentkontrolltidspunkt",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:dokumentkontrolltidspunkt"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:dokumentkontroll"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:legitimasjonsdokument"
+  }, {
+    "name" : "status",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Folkeregisterpersonstatus",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "status",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:status"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:status"
+  }, {
+    "name" : "utlendingsmyndighetenesIdentifikasjonsnummer",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Personidentifikasjon",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "identifikasjonsnummer",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identifikasjonsnummer"
+        }, {
+          "name" : "identifikasjonsnummertype",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:identifikasjonsnummertype"
+        }, {
+          "name" : "utstederland",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utstederland"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utlendingsmyndighetenesIdentifikasjonsnummer"
+  }, {
+    "name" : "utenlandskPersonidentifikasjon",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : "Personidentifikasjon"
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utenlandskPersonidentifikasjon"
+  }, {
+    "name" : "deltBosted",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "DeltBosted",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "vegadresse",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "Vegadresse",
+            "fields" : [ {
+              "name" : "kommunenummer",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kommunenummer"
+            }, {
+              "name" : "bruksenhetsnummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bruksenhetsnummer"
+            }, {
+              "name" : "bruksenhetstype",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bruksenhetstype"
+            }, {
+              "name" : "adressenavn",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressenavn"
+            }, {
+              "name" : "adressenummer",
+              "type" : [ "null", {
+                "type" : "record",
+                "name" : "Adressenummer",
+                "fields" : [ {
+                  "name" : "husnummer",
+                  "type" : "string",
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:husnummer"
+                }, {
+                  "name" : "husbokstav",
+                  "type" : [ "null", "string" ],
+                  "default" : null,
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:husbokstav"
+                } ]
+              } ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressenummer"
+            }, {
+              "name" : "adressekode",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressekode"
+            }, {
+              "name" : "adressetilleggsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressetilleggsnavn"
+            }, {
+              "name" : "poststed",
+              "type" : [ "null", {
+                "type" : "record",
+                "name" : "Poststed",
+                "fields" : [ {
+                  "name" : "poststedsnavn",
+                  "type" : [ "null", "string" ],
+                  "default" : null,
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststedsnavn"
+                }, {
+                  "name" : "postnummer",
+                  "type" : [ "null", "string" ],
+                  "default" : null,
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postnummer"
+                } ]
+              } ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststed"
+            }, {
+              "name" : "coAdressenavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:coAdressenavn"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vegadresse"
+        }, {
+          "name" : "matrikkeladresse",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "Matrikkeladresse",
+            "fields" : [ {
+              "name" : "bruksenhetsnummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bruksenhetsnummer"
+            }, {
+              "name" : "bruksenhetstype",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bruksenhetstype"
+            }, {
+              "name" : "matrikkelnummer",
+              "type" : {
+                "type" : "record",
+                "name" : "Matrikkelnummer",
+                "fields" : [ {
+                  "name" : "kommunenummer",
+                  "type" : "string",
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kommunenummer"
+                }, {
+                  "name" : "gaardsnummer",
+                  "type" : "long",
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gaardsnummer"
+                }, {
+                  "name" : "bruksnummer",
+                  "type" : "long",
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bruksnummer"
+                }, {
+                  "name" : "festenummer",
+                  "type" : [ "null", "long" ],
+                  "default" : null,
+                  "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:festenummer"
+                } ]
+              },
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:matrikkelnummer"
+            }, {
+              "name" : "undernummer",
+              "type" : [ "null", "long" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:undernummer"
+            }, {
+              "name" : "adressetilleggsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressetilleggsnavn"
+            }, {
+              "name" : "poststed",
+              "type" : [ "null", "Poststed" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststed"
+            }, {
+              "name" : "coAdressenavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:coAdressenavn"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:matrikkeladresse"
+        }, {
+          "name" : "ukjentBosted",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "UkjentBosted",
+            "fields" : [ {
+              "name" : "bostedskommune",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bostedskommune"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ukjentBosted"
+        }, {
+          "name" : "startdatoForKontrakt",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:startdatoForKontrakt"
+        }, {
+          "name" : "sluttdatoForKontrakt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:sluttdatoForKontrakt"
+        }, {
+          "name" : "adresseIdentifikatorFraMatrikkelen",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresseIdentifikatorFraMatrikkelen"
+        }, {
+          "name" : "naerAdresseIdentifikatorFraMatrikkelen",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:naerAdresseIdentifikatorFraMatrikkelen"
+        }, {
+          "name" : "adressegradering",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressegradering"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:deltBosted"
+  }, {
+    "name" : "kjoenn",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Personkjoenn",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "kjoenn",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kjoenn"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kjoenn"
+  }, {
+    "name" : "foedsel",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Foedsel",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "foedselsdato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsdato"
+        }, {
+          "name" : "foedselsaar",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsaar"
+        }, {
+          "name" : "foedested",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedested"
+        }, {
+          "name" : "foedekommuneINorge",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedekommuneINorge"
+        }, {
+          "name" : "foedeland",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedeland"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedsel"
+  }, {
+    "name" : "foedselINorge",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "FoedselINorge",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "foedselsinstitusjonsnavn",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsinstitusjonsnavn"
+        }, {
+          "name" : "rekkefoelgenummer",
+          "type" : [ "null", "long" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:rekkefoelgenummer"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselINorge"
+  }, {
+    "name" : "familierelasjon",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Familierelasjon",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "relatertPerson",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:relatertPerson"
+        }, {
+          "name" : "relatertPersonUtenFolkeregisteridentifikator",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "RelatertBiPerson",
+            "fields" : [ {
+              "name" : "navn",
+              "type" : "Personnavn",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:navn"
+            }, {
+              "name" : "foedselsdato",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsdato"
+            }, {
+              "name" : "statsborgerskap",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:statsborgerskap"
+            }, {
+              "name" : "kjoenn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kjoenn"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:relatertPersonUtenFolkeregisteridentifikator"
+        }, {
+          "name" : "relatertPersonsRolle",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:relatertPersonsRolle"
+        }, {
+          "name" : "minRolleForPerson",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:minRolleForPerson"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:familierelasjon"
+  }, {
+    "name" : "sivilstand",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Sivilstand",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "sivilstand",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:sivilstand"
+        }, {
+          "name" : "sivilstandsdato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:sivilstandsdato"
+        }, {
+          "name" : "myndighet",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:myndighet"
+        }, {
+          "name" : "kommune",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kommune"
+        }, {
+          "name" : "sted",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:sted"
+        }, {
+          "name" : "utland",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utland"
+        }, {
+          "name" : "relatertVedSivilstand",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:relatertVedSivilstand"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:sivilstand"
+  }, {
+    "name" : "doedsfall",
+    "type" : [ "null", {
+      "type" : "record",
+      "name" : "Doedsfall",
+      "fields" : [ {
+        "name" : "ajourholdstidspunkt",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+      }, {
+        "name" : "erGjeldende",
+        "type" : [ "null", "boolean" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+      }, {
+        "name" : "kilde",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+      }, {
+        "name" : "aarsak",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+      }, {
+        "name" : "gyldighetstidspunkt",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+      }, {
+        "name" : "opphoerstidspunkt",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+      }, {
+        "name" : "doedsdato",
+        "type" : [ "null", "string" ],
+        "default" : null,
+        "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:doedsdato"
+      } ]
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:doedsfall"
+  }, {
+    "name" : "navn",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Folkeregisterpersonnavn",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "fornavn",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:fornavn"
+        }, {
+          "name" : "mellomnavn",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:mellomnavn"
+        }, {
+          "name" : "etternavn",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:etternavn"
+        }, {
+          "name" : "forkortetNavn",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:forkortetNavn"
+        }, {
+          "name" : "originaltNavn",
+          "type" : [ "null", "Personnavn" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:originaltNavn"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:navn"
+  }, {
+    "name" : "adressebeskyttelse",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "GraderingAvAdresse",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "graderingsnivaa",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:graderingsnivaa"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressebeskyttelse"
+  }, {
+    "name" : "bostedsadresse",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Bostedsadresse",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "vegadresse",
+          "type" : [ "null", "Vegadresse" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vegadresse"
+        }, {
+          "name" : "matrikkeladresse",
+          "type" : [ "null", "Matrikkeladresse" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:matrikkeladresse"
+        }, {
+          "name" : "ukjentBosted",
+          "type" : [ "null", "UkjentBosted" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ukjentBosted"
+        }, {
+          "name" : "adresseIdentifikatorFraMatrikkelen",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresseIdentifikatorFraMatrikkelen"
+        }, {
+          "name" : "naerAdresseIdentifikatorFraMatrikkelen",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:naerAdresseIdentifikatorFraMatrikkelen"
+        }, {
+          "name" : "adressegradering",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressegradering"
+        }, {
+          "name" : "flyttedato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:flyttedato"
+        }, {
+          "name" : "grunnkrets",
+          "type" : [ "null", "long" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:grunnkrets"
+        }, {
+          "name" : "stemmekrets",
+          "type" : [ "null", "long" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:stemmekrets"
+        }, {
+          "name" : "skolekrets",
+          "type" : [ "null", "long" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:skolekrets"
+        }, {
+          "name" : "kirkekrets",
+          "type" : [ "null", "long" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kirkekrets"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bostedsadresse"
+  }, {
+    "name" : "oppholdsadresse",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Oppholdsadresse",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "utenlandskAdresse",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "InternasjonalAdresse",
+            "fields" : [ {
+              "name" : "coAdressenavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:coAdressenavn"
+            }, {
+              "name" : "adressenavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressenavn"
+            }, {
+              "name" : "bygning",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bygning"
+            }, {
+              "name" : "etasjenummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:etasjenummer"
+            }, {
+              "name" : "boenhet",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:boenhet"
+            }, {
+              "name" : "postboks",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postboks"
+            }, {
+              "name" : "postkode",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postkode"
+            }, {
+              "name" : "byEllerStedsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:byEllerStedsnavn"
+            }, {
+              "name" : "distriktsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:distriktsnavn"
+            }, {
+              "name" : "region",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:region"
+            }, {
+              "name" : "landkode",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:landkode"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utenlandskAdresse"
+        }, {
+          "name" : "adressenErUkjent",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressenErUkjent"
+        }, {
+          "name" : "vegadresse",
+          "type" : [ "null", "Vegadresse" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vegadresse"
+        }, {
+          "name" : "matrikkeladresse",
+          "type" : [ "null", "Matrikkeladresse" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:matrikkeladresse"
+        }, {
+          "name" : "adresseIdentifikatorFraMatrikkelen",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresseIdentifikatorFraMatrikkelen"
+        }, {
+          "name" : "adressegradering",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressegradering"
+        }, {
+          "name" : "oppholdsadressedato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdsadressedato"
+        }, {
+          "name" : "oppholdAnnetSted",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdAnnetSted"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdsadresse"
+  }, {
+    "name" : "innflytting",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "InnflyttingTilNorge",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "fraflyttingsland",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:fraflyttingsland"
+        }, {
+          "name" : "fraflyttingsstedIUtlandet",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:fraflyttingsstedIUtlandet"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:innflytting"
+  }, {
+    "name" : "utflytting",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "UtflyttingFraNorge",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "tilflyttingsland",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:tilflyttingsland"
+        }, {
+          "name" : "tilflyttingsstedIUtlandet",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:tilflyttingsstedIUtlandet"
+        }, {
+          "name" : "utflyttingsdato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utflyttingsdato"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utflytting"
+  }, {
+    "name" : "brukAvSamiskSpraak",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "SamiskSpraak",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "spraak",
+          "type" : {
+            "type" : "array",
+            "items" : "string"
+          },
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:spraak"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:brukAvSamiskSpraak"
+  }, {
+    "name" : "forholdTilSametingetsValgmanntall",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "ForholdTilSametingetsValgmanntall",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "forhold",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:forhold"
+        }, {
+          "name" : "vedtaksdato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vedtaksdato"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:forholdTilSametingetsValgmanntall"
+  }, {
+    "name" : "preferertKontaktadresse",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "PreferertKontaktadresse",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "valg",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:valg"
+        }, {
+          "name" : "adressegradering",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressegradering"
+        }, {
+          "name" : "kontaktadresseIFrittFormat",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "AdresseIFrittFormat",
+            "fields" : [ {
+              "name" : "adresselinje",
+              "type" : [ "null", {
+                "type" : "array",
+                "items" : [ "null", "string" ]
+              } ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresselinje"
+            }, {
+              "name" : "landkode",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:landkode"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kontaktadresseIFrittFormat"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:preferertKontaktadresse"
+  }, {
+    "name" : "postadresse",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Kontaktadresse",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "adressegradering",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressegradering"
+        }, {
+          "name" : "postboksadresse",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "Postboksadresse",
+            "fields" : [ {
+              "name" : "postbokseier",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postbokseier"
+            }, {
+              "name" : "postboks",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postboks"
+            }, {
+              "name" : "poststed",
+              "type" : [ "null", "Poststed" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststed"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postboksadresse"
+        }, {
+          "name" : "vegadresse",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "VegadresseForPost",
+            "fields" : [ {
+              "name" : "coAdressenavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:coAdressenavn"
+            }, {
+              "name" : "adressenavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressenavn"
+            }, {
+              "name" : "adressenummer",
+              "type" : [ "null", "Adressenummer" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressenummer"
+            }, {
+              "name" : "poststed",
+              "type" : [ "null", "Poststed" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststed"
+            }, {
+              "name" : "adressekode",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressekode"
+            }, {
+              "name" : "adressetilleggsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressetilleggsnavn"
+            }, {
+              "name" : "bruksenhetsnummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bruksenhetsnummer"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vegadresse"
+        }, {
+          "name" : "postadresseIFrittFormat",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "PostadresseIFrittFormat",
+            "fields" : [ {
+              "name" : "adresselinje",
+              "type" : [ "null", {
+                "type" : "array",
+                "items" : [ "null", "string" ]
+              } ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresselinje"
+            }, {
+              "name" : "poststed",
+              "type" : [ "null", "Poststed" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:poststed"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postadresseIFrittFormat"
+        }, {
+          "name" : "adresseIdentifikatorFraMatrikkelen",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresseIdentifikatorFraMatrikkelen"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postadresse"
+  }, {
+    "name" : "postadresseIUtlandet",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "KontaktadresseIUtlandet",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "adressegradering",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adressegradering"
+        }, {
+          "name" : "utenlandskAdresse",
+          "type" : [ "null", "InternasjonalAdresse" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utenlandskAdresse"
+        }, {
+          "name" : "utenlandskAdresseIFrittFormat",
+          "type" : [ "null", {
+            "type" : "record",
+            "name" : "InternasjonalAdresseIFrittFormat",
+            "fields" : [ {
+              "name" : "adresselinje",
+              "type" : [ "null", {
+                "type" : "array",
+                "items" : [ "null", "string" ]
+              } ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:adresselinje"
+            }, {
+              "name" : "postkode",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postkode"
+            }, {
+              "name" : "byEllerStedsnavn",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:byEllerStedsnavn"
+            }, {
+              "name" : "landkode",
+              "type" : "string",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:landkode"
+            } ]
+          } ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:utenlandskAdresseIFrittFormat"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:postadresseIUtlandet"
+  }, {
+    "name" : "foreldreansvar",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Foreldreansvar",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "ansvar",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ansvar"
+        }, {
+          "name" : "ansvarssubjekt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ansvarssubjekt"
+        }, {
+          "name" : "ansvarlig",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ansvarlig"
+        }, {
+          "name" : "ansvarligOrganisasjon",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ansvarligOrganisasjon"
+        }, {
+          "name" : "ansvarligUtenIdentifikator",
+          "type" : [ "null", "RelatertBiPerson" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ansvarligUtenIdentifikator"
+        }, {
+          "name" : "ansvarssubjektUtenIdentifikator",
+          "type" : [ "null", "RelatertBiPerson" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ansvarssubjektUtenIdentifikator"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foreldreansvar"
+  }, {
+    "name" : "statsborgerskap",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Statsborgerskap",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "statsborgerskap",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:statsborgerskap"
+        }, {
+          "name" : "ervervsdato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ervervsdato"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:statsborgerskap"
+  }, {
+    "name" : "bibehold",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "BibeholdAvNorskStatsborgerskap",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "bibeholdstatus",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bibeholdstatus"
+        }, {
+          "name" : "datoForBibehold",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:datoForBibehold"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:bibehold"
+  }, {
+    "name" : "opphold",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "Opphold",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "oppholdstillatelse",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdstillatelse"
+        }, {
+          "name" : "oppholdFra",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdFra"
+        }, {
+          "name" : "oppholdTil",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdTil"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphold"
+  }, {
+    "name" : "oppholdPaaSvalbard",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "OppholdPaaSvalbard",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "startdato",
+          "type" : "string",
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:startdato"
+        }, {
+          "name" : "sluttdato",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:sluttdato"
+        }, {
+          "name" : "fraflyttingskommunenummer",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:fraflyttingskommunenummer"
+        }, {
+          "name" : "fraflyttingsland",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:fraflyttingsland"
+        }, {
+          "name" : "antallTidligereOpphold",
+          "type" : [ "null", "long" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:antallTidligereOpphold"
+        }, {
+          "name" : "antattOppholdsvarighet",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:antattOppholdsvarighet"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:oppholdPaaSvalbard"
+  }, {
+    "name" : "vergemaalEllerFremtidsfullmakt",
+    "type" : [ "null", {
+      "type" : "array",
+      "items" : {
+        "type" : "record",
+        "name" : "VergemaalRepresentasjonEllerFremtidsfullmakt",
+        "fields" : [ {
+          "name" : "ajourholdstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:ajourholdstidspunkt"
+        }, {
+          "name" : "erGjeldende",
+          "type" : [ "null", "boolean" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:erGjeldende"
+        }, {
+          "name" : "kilde",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:kilde"
+        }, {
+          "name" : "aarsak",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:aarsak"
+        }, {
+          "name" : "gyldighetstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:gyldighetstidspunkt"
+        }, {
+          "name" : "opphoerstidspunkt",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:opphoerstidspunkt"
+        }, {
+          "name" : "vergemaaltype",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vergemaaltype"
+        }, {
+          "name" : "embete",
+          "type" : [ "null", "string" ],
+          "default" : null,
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:embete"
+        }, {
+          "name" : "verge",
+          "type" : {
+            "type" : "record",
+            "name" : "VergeRepresentantEllerFullmektig",
+            "fields" : [ {
+              "name" : "navn",
+              "type" : [ "null", "Personnavn" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:navn"
+            }, {
+              "name" : "foedselsEllerDNummer",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:foedselsEllerDNummer"
+            }, {
+              "name" : "omfang",
+              "type" : [ "null", "string" ],
+              "default" : null,
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:omfang"
+            }, {
+              "name" : "omfangetErInnenPersonligOmraade",
+              "type" : "boolean",
+              "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:omfangetErInnenPersonligOmraade"
+            } ]
+          },
+          "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:verge"
+        } ]
+      }
+    } ],
+    "default" : null,
+    "source" : "element folkeregisteret:tilgjengeliggjoering:person:v1:vergemaalEllerFremtidsfullmakt"
+  } ]
+}
