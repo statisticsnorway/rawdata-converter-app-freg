@@ -13,6 +13,8 @@ import no.ssb.rawdata.converter.core.convert.ValueInterceptorChain;
 import no.ssb.rawdata.converter.core.exception.RawdataConverterException;
 import no.ssb.rawdata.converter.core.schema.AggregateSchemaBuilder;
 import no.ssb.rawdata.converter.core.schema.DcManifestSchemaAdapter;
+import no.ssb.rawdata.converter.metrics.Metric;
+import no.ssb.rawdata.converter.metrics.MetricName;
 import no.ssb.rawdata.converter.util.AvroSchemaUtil;
 import no.ssb.rawdata.converter.util.RawdataMessageAdapter;
 import org.apache.avro.Schema;
@@ -157,13 +159,19 @@ public class FregRawdataConverter implements RawdataConverter {
     void convertXml(RawdataMessage rawdataMessage, ConversionResultBuilder resultBuilder, FregSchemaAdapter schemaAdapter) {
         byte[] data = rawdataMessage.get(schemaAdapter.getRawdataItemName());
         try (XmlToRecords records = new XmlToRecords(new ByteArrayInputStream(data), schemaAdapter.getRootElementName(), schemaAdapter.getSchema(), valueInterceptorChain)) {
-            records.forEach(record ->
-              resultBuilder.withRecord(schemaAdapter.getTargetItemName(), record)
+            records.forEach(record -> {
+                  resultBuilder.withRecord(schemaAdapter.getTargetItemName(), record);
+                  resultBuilder.appendCounter(counterName(MetricName.RAWDATA_RECORDS_TOTAL, "schema", schemaAdapter.getSchemaName()), 1);
+              }
             );
         }
         catch (Exception e) {
             throw new FregRawdataConverterException("Error converting freg " + schemaAdapter.getRawdataItemName() + " data at " + posAndIdOf(rawdataMessage), e);
         }
+    }
+
+    private static String counterName(String metricName, String... tags) {
+        return new Metric(metricName, tags).getFullName();
     }
 
     public static class FregRawdataConverterException extends RawdataConverterException {
