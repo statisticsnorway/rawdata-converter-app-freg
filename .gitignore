@@ -6,7 +6,8 @@
 /src/test/javascript/coverage/
 **/target/*
 application-local-private.yml
-ext
+/private
+/bip
 
 ######################
 # Node

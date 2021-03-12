@@ -1,0 +1,9 @@
+micronaut:
+  application:
+    name: rawdata-converter-app-freg
+  config-client:
+    enabled: true
+gcp:
+  project-id: dev-sirius
+  credentials:
+    location: ../localenv/private/gcp/sa-keys/dev-sirius-sa-key.json

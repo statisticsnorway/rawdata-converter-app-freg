@@ -2,6 +2,9 @@ micronaut:
   application.name: rawdata-converter-app-freg
   server:
     port: 8080
+  caches:
+    secrets:
+      expire-after-access: 15m
 
 logger.levels:
   no.ssb.rawdata.converter: DEBUG
@@ -19,10 +22,14 @@ services:
     impl: MOCK
   dapla-metadata-distributor:
     impl: MOCK
+  secrets:
+    impl: LOCAL
+    overrides:
+      rawdata-encryption-credentials-dummy-key: ThisIsASecretDummyKeyUsedToTestRawdataEncryption
 
 pseudo-secrets:
-  secret1:
-    content: C5sn7B4YtwcilAwuVx6NuAsMWLusOSA/ldia40ZugDI=
+  fregsecret1:
+    content: testkeycilAwuVx6NuAsMWLusOSA/ldia40ZugDI=
     type: AES256
 
 rawdata.sources:
@@ -48,15 +55,17 @@ rawdata.converter:
       debug:
         dryrun: false
         development-mode: true
-        log-rawdata-content-allowed: true
-        store-failed-messages: true
-        failed-messages-storage-path: /tmp/failed-messages
-        store-all-messages: false
-        all-messages-storage-path: ./rawdata-messages-output
+        log-failed-rawdata: false
+        store-failed-rawdata: true
+        local-storage-path: ./rawdata-messages-output
       converter-settings:
         rawdata-samples: 1
         max-records-before-flush: 1000000
         max-seconds-before-flush: 300
+      rawdata-source:
+        encryption-key-id: rawdata-encryption-credentials-dummy-key
+        encryption-salt: sometestsalt
+        name: fs-freg
       target-storage:
         type: filesystem
         root: file://../localenv/datastore
@@ -67,34 +76,33 @@ rawdata.converter:
       pseudo-rules:
         - name: fodselsnummer
           pattern: '**/{folkeregisteridentifikator,foedselsEllerDNummer,relatertVedSivilstand,relatertPerson,ansvarlig,ansvarssubjekt}'
-          func: fpe-fnr(secret1)
+          func: fpe-fnr(fregsecret1)
         - name: rettIdentitetVedIdentifikasjonsnummer
           pattern: '**/rettIdentitetVedIdentifikasjonsnummer'
-          func: fpe-fnr(secret1)
+          func: fpe-fnr(fregsecret1)
         - name: organisasjonsnummer
           pattern: '**/organisasjonsnummer'
-          func: fpe-digits(secret1)
+          func: fpe-digits(fregsecret1)
         - name: organisasjonsnavn
           pattern: '**/{organisasjonsnavn,ansvarligOrganisasjon}'
-          func: fpe-anychar(secret1)
+          func: fpe-anychar(fregsecret1)
         - name: postbokseier
           pattern: '**/postboksadresse/postbokseier'
-          func: fpe-anychar(secret1)
+          func: fpe-anychar(fregsecret1)
         - name: identifikasjonsdokumentnummer
           pattern: '**/legitimasjonsdokument/identifikasjonsdokumentnummer'
-          func: fpe-anychar(secret1)
+          func: fpe-anychar(fregsecret1)
         - name: personnavn
           pattern: '{**/fornavn,**/mellomnavn,**/etternavn,**/navn/forkortetNavn}'
-          func: fpe-anychar(secret1)
+          func: fpe-anychar(fregsecret1)
         - name: identifikasjonsnummer
           pattern: '**/identifikasjonsnummer'
-          func: fpe-anychar(secret1)
+          func: fpe-anychar(fregsecret1)
 
     job-default:
       parent: base
       active-by-default: true
       rawdata-source:
-        name: fs-freg
         topic: freg-uttrekk-komplett
         initial-position: FIRST
       target-storage:

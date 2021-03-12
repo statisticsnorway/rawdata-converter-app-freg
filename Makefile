@@ -22,7 +22,7 @@ release: ## Release a new version. Update POMs and tag the new version in git
 
 .PHONY: run-local
 run-local: ## Run the app locally (without docker)
-	java -Dcom.sun.management.jmxremote -Dmicronaut.environments=local-private -jar target/rawdata-converter-app-*.jar
+	MICRONAUT_ENVIRONMENTS=local MICRONAUT_CONFIG_FILES=conf/application-local.yml java -Dcom.sun.management.jmxremote -jar  target/rawdata-converter-app-*.jar
 
 .PHONY: help
 help:
